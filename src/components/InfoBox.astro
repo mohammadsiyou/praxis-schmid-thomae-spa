@@ -1,0 +1,23 @@
+---
+interface Props {
+  text: string;
+  class?: string;
+}
+
+const { text, class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={[
+    "text-[#948f8f] text-[13px] leading-[28px] text-left bg-[#f6f8f3] rounded-[5px]",
+    "[@media(min-width:768px)]:text-[16px] [@media(min-width:768px)]:leading-[35px]",
+    "pt-[20px] pr-[20px] pb-[20px] pl-[20px]",
+    "[@media(min-width:480px)]:pt-[40px] [@media(min-width:480px)]:pr-[40px] [@media(min-width:480px)]:pl-[40px]",
+    "[@media(min-width:992px)]:pr-[60px] [@media(min-width:992px)]:pl-[60px]",
+    "[&_a]:text-[#da7b53] [&_a]:transition-opacity [&_a]:duration-200 [&_a]:inline-block",
+    "[&_h5]:font-semibold [&_h5]:text-[14px] [&_h5]:mb-[10px] [@media(min-width:768px)]:[&_h5]:text-[18px]",
+    "[&_ul]:list-disc [&_ul]:pl-[20px] [&_ul]:my-[1em] [&_li]:mb-[0.5em]",
+    className,
+  ]}
+  set:html={text}
+/>

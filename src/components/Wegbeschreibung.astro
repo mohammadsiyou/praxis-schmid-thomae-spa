@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  items: string[];
+  class?: string;
+}
+
+const { title, items, class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={[
+    "max-w-[940px] mx-auto",
+    "mt-[60px] mb-[20px] px-[40px]",
+    "[@media(min-width:768px)]:mb-[140px]",
+    "[@media(min-width:992px)]:mt-[13px] [@media(min-width:992px)]:mb-[73px] [@media(min-width:992px)]:px-0 [@media(min-width:992px)]:pr-[60px]",
+    className,
+  ]}
+>
+  <p
+    class="text-[#948f8f] tracking-[3px] uppercase mb-[10px] font-sans text-[15px] font-semibold leading-[34px] [@media(min-width:768px)]:tracking-[1px]"
+  >
+    {title}
+  </p>
+  <ul class="mt-[20px] mb-[10px] list-disc pl-0 [@media(min-width:768px)]:pl-[20px]">
+    {
+      items.map((item) => (
+        <li
+          class="text-[#948f8f] mb-[10px] text-[13px] leading-[28px] [@media(min-width:768px)]:text-[16px] [@media(min-width:768px)]:leading-[35px] [&_strong]:font-bold"
+          set:html={item}
+        />
+      ))
+    }
+  </ul>
+</div>

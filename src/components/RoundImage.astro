@@ -1,0 +1,26 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  srcset?: string;
+  sizes?: string;
+  class?: string;
+}
+
+const { src, alt, srcset, sizes, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "flex justify-center my-[20px] [@media(min-width:480px)]:my-[40px] [@media(min-width:768px)]:my-[60px]",
+    className,
+  ]}
+>
+  <img
+    src={src}
+    srcset={srcset}
+    sizes={sizes}
+    alt={alt}
+    class="w-[80%] [@media(min-width:768px)]:w-[70%] max-w-[300px] [@media(min-width:480px)]:max-w-[350px] [@media(min-width:768px)]:max-w-[400px] rounded-[50%]"
+  />
+</div>

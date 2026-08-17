@@ -1,0 +1,16 @@
+---
+interface Props {
+  text: string;
+  class?: string;
+}
+
+const { text, class: className } = Astro.props;
+---
+
+<h6
+  class:list={[
+    "text-[#948f8f] tracking-[3px] uppercase font-normal text-[12px] [@media(min-width:480px)]:text-[14px] [@media(min-width:992px)]:text-[16px] leading-[28px]",
+    className,
+  ]}
+  set:html={text}
+/>

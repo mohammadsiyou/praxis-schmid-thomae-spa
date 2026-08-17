@@ -1,0 +1,11 @@
+---
+import Container from "./Container.astro";
+---
+
+<section
+  class="pt-[40px] [@media(min-width:480px)]:pt-[60px] [@media(min-width:768px)]:pt-[40px] [@media(min-width:992px)]:pt-[100px]"
+>
+  <Container>
+    <slot />
+  </Container>
+</section>

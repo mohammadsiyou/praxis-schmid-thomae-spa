@@ -1,0 +1,138 @@
+---
+const navItems = [
+  { label: "Psychotherapie", path: "/psychotherapie-muenchen-haidhausen" },
+  { label: "Trauma", path: "/traumatherapie-muenchen" },
+  { label: "Bindungsanalyse", path: "/bindungsanalyse-muenchen" },
+  { label: "Ablauf", path: "/praxis-fuer-psychotherapie-muenchen-haidhausen" },
+  { label: "Portrait", path: "/portrait" },
+  { label: "Kontakt", path: "/kontakt" },
+];
+
+const isHome = Astro.url.pathname === "/";
+---
+
+<header class="sticky top-0 z-50 bg-[#f4f4f4]">
+  <div class={`relative mx-auto max-w-[940px] flex ${isHome ? "justify-center" : "justify-between"}`}>
+    {
+      !isHome && (
+        <a href="/" aria-label="home" class="inline-block">
+          <img
+            width="146"
+            alt=""
+            sizes="(max-width: 479px) 109.5px, 146px"
+            srcset="/Logo_Anja_191203-p-500.png 500w, /Logo_Anja_191203-p-800.png 800w, /Logo_Anja_191203.png 1213w"
+            src="/Logo_Anja_191203.png"
+            class="block max-[479px]:max-w-[75%] pt-[10px] pb-[10px] max-[767px]:pl-[20px] max-[991px]:pl-[40px]"
+          />
+        </a>
+      )
+    }
+    <!-- desktop nav -->
+    <nav class="hidden pt-[122px] [@media(min-width:992px)]:block">
+      <ul class="flex justify-center gap-[40px]">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.path}
+                class="text-[13px] text-[#948f8f] tracking-[1px] hover:text-[#da7b53] capitalize"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- mobile burger -->
+    <div
+      class:list={[
+        "flex pt-[40px] [@media(min-width:480px)]:pt-[63px] [@media(min-width:992px)]:hidden",
+        isHome ? "justify-center" : "justify-end",
+      ]}
+    >
+      <div class="w-[60px] h-[60px] flex justify-center items-center">
+        <button
+          id="burger-btn"
+          type="button"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+          class="flex h-[12px] w-[14px] flex-col justify-between cursor-pointer z-[90]"
+        >
+          <span class="h-[3px] w-full bg-[#b8b8b8]"></span>
+          <span class="h-[3px] w-full bg-[#b8b8b8]"></span>
+          <span class="h-[3px] w-full bg-[#b8b8b8]"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- overlay -->
+  <div id="drawer-overlay" class="fixed inset-0 z-40 hidden md:hidden"></div>
+
+  <!-- mobile drawer -->
+  <div
+    id="mobile-drawer"
+    class="fixed inset-y-0 left-0 z-50 w-1/2 -translate-x-full bg-[#f6f8f3] transition-transform duration-300 ease-in-out md:hidden"
+  >
+    <nav class="pt-[122px]">
+      <ul class="flex flex-col">
+        {
+          navItems.map((item) => (
+            <li class="py-0.5">
+              <a
+                href={item.path}
+                class="text-[13px] text-[#948f8f] text-left pl-[40px] tracking-[1px] hover:text-[#da7b53]"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const burgerBtn = document.getElementById("burger-btn");
+  const drawer = document.getElementById("mobile-drawer");
+  const overlay = document.getElementById("drawer-overlay");
+
+  const openDrawer = () => {
+    drawer?.classList.remove("-translate-x-full");
+    overlay?.classList.remove("hidden");
+    burgerBtn?.setAttribute("aria-expanded", "true");
+  };
+
+  const closeDrawer = () => {
+    drawer?.classList.add("-translate-x-full");
+    overlay?.classList.add("hidden");
+    burgerBtn?.setAttribute("aria-expanded", "false");
+  };
+
+  burgerBtn?.addEventListener("click", () => {
+    const isOpen = burgerBtn.getAttribute("aria-expanded") === "true";
+    if (isOpen) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  overlay?.addEventListener("click", closeDrawer);
+
+  document.addEventListener("click", (event) => {
+    const target = event.target as Node;
+    const isOpen = burgerBtn?.getAttribute("aria-expanded") === "true";
+    if (!isOpen) return;
+
+    const clickedInsideDrawer = drawer?.contains(target);
+    const clickedBurger = burgerBtn?.contains(target);
+
+    if (!clickedInsideDrawer && !clickedBurger) {
+      closeDrawer();
+    }
+  });
+</script>

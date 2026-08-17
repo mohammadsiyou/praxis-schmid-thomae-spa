@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const paragraphs = text
+  .split(/\n\s*\n/)
+  .map((p) => p.trim().replace(/\n/g, "<br>"))
+  .filter(Boolean);
+---
+
+<div
+  class="text-[#948f8f] text-[13px] font-normal text-left [@media(min-width:768px)]:text-[14px] [@media(min-width:992px)]:text-[16px] leading-[35px] [&_a]:text-[#da7b53] [&_a]:transition-opacity [&_a]:duration-200 [&_a]:inline-block [&_ul]:list-disc [&_ul]:pl-[20px] [&_ul]:my-[1em] [&_li]:mb-[0.5em]"
+>
+  {paragraphs.map((paragraph) => <p class="[&:not(:last-child)]:mb-[1em]" set:html={paragraph} />)}
+</div>

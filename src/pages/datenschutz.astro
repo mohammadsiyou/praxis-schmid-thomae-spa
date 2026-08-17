@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
+import Divider from "../components/Divider.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import RichText from "../components/RichText.astro";
+import { datenschutzSections } from "../content/datenschutz-text";
+---
+
+<BaseLayout title="Datenschutz I Anja Schmid-Thomae">
+  <Container class="pt-[40px]">
+    <SectionHeading text="Datenschutz" />
+    <Divider />
+    <div class="pb-[60px]">
+      {
+        datenschutzSections.map((section) => (
+          <div class="mt-[20px] [@media(min-width:480px)]:mt-[40px]">
+            <h2 class="text-[#948f8f] text-left tracking-[2px] uppercase mb-[10px] text-[14px] font-semibold leading-[28px] [@media(min-width:480px)]:tracking-[1px] [@media(min-width:480px)]:text-[15px] [@media(min-width:480px)]:leading-[34px]">
+              {section.heading}
+            </h2>
+            <RichText text={section.text} />
+          </div>
+        ))
+      }
+      <div class="mt-[20px] [@media(min-width:480px)]:mt-[40px]">
+        <h2 class="text-[#948f8f] text-left tracking-[2px] uppercase mb-[10px] text-[14px] font-semibold leading-[28px] [@media(min-width:480px)]:tracking-[1px] [@media(min-width:480px)]:text-[15px] [@media(min-width:480px)]:leading-[34px]">
+          Cookie-Erklärung
+        </h2>
+        <div class="text-[#948f8f] text-[13px] font-normal text-left [@media(min-width:768px)]:text-[14px] [@media(min-width:992px)]:text-[16px] leading-[35px] [&_a]:text-[#da7b53] [&_a]:transition-opacity [&_a]:duration-200 [&_a]:inline-block">
+          <script
+            is:inline
+            id="CookieDeclaration"
+            src="https://consent.cookiebot.com/c34fa42c-5086-41ae-a295-9bb10bfed133/cd.js"
+            type="text/javascript"
+            async
+          ></script>
+        </div>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>

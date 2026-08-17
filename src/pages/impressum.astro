@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
+import Divider from "../components/Divider.astro";
+import RichText from "../components/RichText.astro";
+import { impressumSections } from "../content/impressum-text";
+import SectionSubheading from "../components/SectionSubheading.astro";
+---
+
+<BaseLayout title="Impressum I Anja Schmid-Thomae">
+  <Container class="pt-[40px]">
+    <SectionSubheading text="Impressum" />
+    <Divider />
+    <div class="pb-[60px]">
+      {
+        impressumSections.map((section) => (
+          <div class="mt-[20px] [@media(min-width:480px)]:mt-[40px]">
+            <h2 class="text-[#948f8f] text-left tracking-[2px] uppercase mb-[10px] text-[14px] font-semibold leading-[28px] [@media(min-width:480px)]:tracking-[1px] [@media(min-width:480px)]:text-[15px] [@media(min-width:480px)]:leading-[34px]">
+              {section.heading}
+            </h2>
+            <RichText text={section.text} />
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</BaseLayout>

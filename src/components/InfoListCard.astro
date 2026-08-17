@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  items: string[];
+  class?: string;
+}
+
+const { title, items, class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={[
+    "text-[#b8b8b8] leading-[50px] text-left bg-[#f6f8f3] rounded-[5px]",
+    "pt-[20px] pr-[20px] pb-[40px] pl-[20px]",
+    "[@media(min-width:480px)]:pt-[40px] [@media(min-width:480px)]:pr-[40px] [@media(min-width:480px)]:pl-[40px]",
+    "[@media(min-width:992px)]:pr-[60px] [@media(min-width:992px)]:pl-[60px]",
+    className,
+  ]}
+>
+  <h5
+    class="text-[#948f8f] text-left tracking-[2px] uppercase mt-[10px] mb-[10px] pl-0 pr-[20px] text-[14px] font-semibold leading-[28px] [@media(min-width:480px)]:tracking-[1px] [@media(min-width:480px)]:text-[15px] [@media(min-width:480px)]:leading-[34px] [@media(min-width:480px)]:mb-0 [@media(min-width:480px)]:pr-0 [@media(min-width:768px)]:mb-[10px]"
+    set:html={title}
+  />
+  <ul
+    class="mt-[20px] mb-[10px] pl-[40px] list-disc [&_a]:text-[#da7b53] [&_a]:text-left [&_a]:tracking-normal [&_a]:normal-case [&_a]:text-[13px] [&_a]:leading-[28px] [&_a]:transition-opacity [&_a]:duration-200 [&_a]:inline-block [@media(min-width:768px)]:[&_a]:text-[14px] [@media(min-width:992px)]:[&_a]:text-[16px]"
+  >
+    {
+      items.map((item) => (
+        <li
+          class="text-[#948f8f] mb-[10px] text-[13px] leading-[28px] [@media(min-width:768px)]:text-[16px] [@media(min-width:768px)]:leading-[35px]"
+          set:html={item}
+        />
+      ))
+    }
+  </ul>
+</div>

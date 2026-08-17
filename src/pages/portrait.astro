@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Container from "../components/Container.astro";
+import Divider from "../components/Divider.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SectionSubheading from "../components/SectionSubheading.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import InfoListCard from "../components/InfoListCard.astro";
+import {
+  portraitEyebrowIntro,
+  portraitAusbildungenTitle,
+  portraitAusbildungenItems,
+  portraitStudiumTitle,
+  portraitStudiumItems,
+  portraitWeiteresTitle,
+  portraitWeiteresItems,
+  portraitMitgliedschaftenTitle,
+  portraitMitgliedschaftenItems,
+  portraitEthikText,
+} from "../content/portrait-text";
+---
+
+<BaseLayout title="Heilpraktikerin für Psychotherapie I Anja Schmid-Thomae">
+  <Hero
+    src="/Portrait-Anja-Schmid-Thomae-2.jpg"
+    srcset=""
+    sizes=""
+    width="436"
+    alt="Portraitbild Dr.rer.soc. Anja Schmid-Thomae"
+    class="rounded-[50%]"
+  />
+  <SectionContainer
+    ><SectionHeading text="Über mich" />
+    <SectionSubheading text="mein bisheriger lebensweg..." />
+    <Divider />
+    <Eyebrow text={portraitEyebrowIntro} class="text-center" />
+    <InfoListCard
+      title={portraitAusbildungenTitle}
+      items={portraitAusbildungenItems}
+      class="mt-[20px] [@media(min-width:480px)]:mt-[40px]"
+    />
+    <InfoListCard
+      title={portraitStudiumTitle}
+      items={portraitStudiumItems}
+      class="mt-[20px] [@media(min-width:480px)]:mt-[40px]"
+    />
+    <InfoListCard
+      title={portraitWeiteresTitle}
+      items={portraitWeiteresItems}
+      class="mt-[20px] [@media(min-width:480px)]:mt-[40px]"
+    />
+    <InfoListCard
+      title={portraitMitgliedschaftenTitle}
+      items={portraitMitgliedschaftenItems}
+      class="mt-[20px] [@media(min-width:480px)]:mt-[40px]"
+    />
+  </SectionContainer>
+  <Container>
+    <Divider />
+    <Eyebrow
+      text={portraitEthikText}
+      class="text-center mb-[40px] [@media(min-width:992px)]:mb-[60px]"
+    />
+  </Container>
+</BaseLayout>

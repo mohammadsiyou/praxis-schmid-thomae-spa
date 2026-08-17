@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Divider from "../components/Divider.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SectionSubheading from "../components/SectionSubheading.astro";
+import InfoBox from "../components/InfoBox.astro";
+import {
+  therapieablaufPsychotherapieInfo,
+  therapieablaufBindungsanalyseInfo,
+  therapieablaufKostenInfo,
+} from "../content/therapieablauf-muenchen-haidhausen-text";
+---
+
+<BaseLayout title="Ablauf Praxis Muenchen Haidhausen  I Anja Schmid-Thomae">
+  <Hero
+    src="/Psychotherapie-am-Pariser-Platz-2.jpg"
+    srcset="/Psychotherapie-am-Pariser-Platz-2-p-500.jpeg 500w, /Psychotherapie-am-Pariser-Platz-2-p-800.jpeg 800w, /Psychotherapie-am-Pariser-Platz-2.jpg 1000w"
+    sizes="(max-width: 767px) 80vw, 436px"
+    width="436"
+    alt="Praxisraum von Dr. rer. soc. Anja Schmid-Thomae"
+    class="rounded-[50%]"
+  />
+  <SectionContainer>
+    <SectionHeading text="Therapieablauf" />
+    <SectionSubheading text="die nächsten schritte..." />
+    <Divider />
+    <InfoBox text={therapieablaufPsychotherapieInfo} class="mt-[20px] [@media(min-width:480px)]:mt-[40px]" />
+    <InfoBox text={therapieablaufBindungsanalyseInfo} class="mt-[20px] [@media(min-width:480px)]:mt-[40px]" />
+    <InfoBox text={therapieablaufKostenInfo} class="mt-[20px] mb-[40px] [@media(min-width:480px)]:mt-[40px] [@media(min-width:992px)]:mb-[60px]" />
+  </SectionContainer>
+</BaseLayout>

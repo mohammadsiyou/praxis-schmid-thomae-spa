@@ -1,0 +1,59 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const linkClass =
+  "opacity-60 text-[#da7b53] tracking-normal normal-case mb-0 pt-[2px] text-[14px] no-underline hover:text-[#da7b53] hover:opacity-100";
+---
+
+<div
+  class:list={[
+    "flex flex-col items-center gap-[40px] [@media(min-width:768px)]:gap-[60px] [@media(min-width:992px)]:gap-[100px] [@media(min-width:768px)]:flex-row [@media(min-width:768px)]:items-start",
+    className,
+  ]}
+>
+  <div
+    class="w-full [@media(min-width:768px)]:w-auto [@media(min-width:768px)]:flex-shrink-0"
+  >
+    <img
+      src="/logo-1213.png"
+      srcset="/logo-500.png 500w, /logo-800.png 800w, /logo-1213.png 1213w"
+      sizes="(max-width: 479px) 55vw, (max-width: 767px) 53vw, (max-width: 991px) 34vw, 343px"
+      width="343"
+      alt=""
+      class="w-full mx-auto max-w-[300px] [@media(min-width:480px)]:max-w-[350px] [@media(min-width:768px)]:max-w-[340px]"
+    />
+  </div>
+
+  <div>
+    <p
+      class="text-[#948f8f] tracking-[1px] uppercase mb-[10px] font-sans text-[15px] font-[600] leading-[34px]"
+    >
+      ihr weg zu mir
+    </p>
+
+    <p class="opacity-60 text-[#535151] text-[13px] [@media(min-width:768px)]:text-[16px] leading-[30px]">
+      Dr. rer. soc. Anja Schmid-Thomae<br />
+      Heilpraktikerin, ausschließlich für das Gebiet der Psychotherapie<br
+      /><br />
+      Privatpraxis für Psychotherapie (nach dem Heilpraktikergesetz), <br />
+      Pränatale Bindungsanalyse &amp; Beratung <br /><br />
+    </p>
+
+    <p class="opacity-60 text-[#535151] text-[13px] [@media(min-width:768px)]:text-[16px] leading-[30px]">
+      Pariser Straße 27 - Rückgebäude<br />
+      81667 München - Haidhausen
+    </p>
+
+    <a href="tel:+4917650032963" class={linkClass}
+      >Phone +49 176 500 329 63</a
+    ><br />
+    <a
+      href="mailto:mail@praxis-schmid-thomae.de?subject=Anfrage%20Psychotherapie"
+      class={linkClass}>mail@praxis-schmid-thomae.de</a
+    >
+  </div>
+</div>

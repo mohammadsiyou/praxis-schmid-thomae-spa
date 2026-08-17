@@ -1,0 +1,34 @@
+---
+interface Props {
+  src?: string;
+  srcset?: string;
+  sizes?: string;
+  width?: string;
+  alt?: string;
+  class?: string;
+}
+
+const {
+  src = "/logo-full-text.png",
+  srcset = "/logo-full-text-500.png 500w, /logo-full-text-800.png 800w, /logo-full-text.png 1213w",
+  sizes = "(max-width: 767px) 80vw, 436px",
+  width = "436",
+  alt = "Logo Dr. rer. soc. Anja Schmid-Thomae Heilpraktikerin für Psychotherapie",
+  class: className = "",
+} = Astro.props;
+---
+
+<section
+  class="bg-[#f4f4f4] overflow-hidden"
+>
+  <div class="flex items-center justify-center [@media(max-width:479px)]:mb-[40px] [@media(max-width:479)]:mt-[20px] [@media(min-width:480px)]:h-[620px]">
+    <img
+      src={src}
+      srcset={srcset}
+      sizes={sizes}
+      width={width}
+      alt={alt}
+      class:list={["max-[767px]:w-[80%]", className]}
+    />
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const subFooterLinks = [
+  { label: "Impressum", href: "/impressum" },
+  { label: "Datenschutz", href: "/datenschutz" },
+];
+
+const subFooterLinkClass =
+  "capitalize text-[#da7b53] text-[14px] leading-[28px] transition-opacity duration-200 inline-block";
+---
+
+<div class:list={["flex justify-center gap-[20px]", className]}>
+  {
+    subFooterLinks.map((link) => (
+      <a href={link.href} class={subFooterLinkClass}>
+        {link.label}
+      </a>
+    ))
+  }
+</div>

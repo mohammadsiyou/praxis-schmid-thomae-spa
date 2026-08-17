@@ -1,17 +1,36 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Container from "../components/Container.astro";
+import Divider from "../components/Divider.astro";
+import RichText from "../components/RichText.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import SectionSubheading from "../components/SectionSubheading.astro";
+import RoundImage from "../components/RoundImage.astro";
+import Eyebrow from "../components/Eyebrow.astro";
+import { introText } from "../content/intro-text";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Psychotherapie Muenchen Haidhausen I Anja Schmid-Thomae">
+  <Hero />
+  <SectionContainer
+    ><SectionHeading text="Krisen bewältigen" />
+    <SectionSubheading text="Wie schön, dass Sie da sind... <br />und sich ein Stück weit von mir begleiten lassen wollen!" />
+    <Divider />
+    <RichText text={introText} />
+  </SectionContainer>
+  <RoundImage
+    src="/Das-innere-Kind.jpg"
+    srcset="/Das-innere-Kind-p-500.jpeg 500w, /Das-innere-Kind.jpg 800w"
+    sizes="(max-width: 479px) 63vw, (max-width: 767px) 53vw, 397px"
+    alt="Zwei Kinder, die an einem warmen Sommertag voller Lebensfreude in einen Bergsee springen."
+  />
+  <Container>
+    <Divider />
+    <Eyebrow
+      text="Ich freue mich darauf, wenn ich Sie auf Ihrem Weg einfühlsam und mit all meiner Kompetenz ein Stück weit begleiten darf.<br />Sisu!"
+      class="text-center pb-[60px]"
+    />
+  </Container>
+</BaseLayout>

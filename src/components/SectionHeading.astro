@@ -1,0 +1,15 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="py-[20px]">
+  <h1
+    class="text-[#b8b8b8] tracking-[3px] uppercase text-center font-normal text-[12px] [@media(min-width:767px)]:text-[14px] [@media(min-width:992px)]:text-[16px] leading-[28px]"
+  >
+    {text}
+  </h1>
+</div>

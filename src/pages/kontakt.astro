@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FooterMain from "../components/FooterMain.astro";
+import SubFooter from "../components/SubFooter.astro";
+import Wegbeschreibung from "../components/Wegbeschreibung.astro";
+import {
+  wegbeschreibungTitle,
+  wegbeschreibungItems,
+} from "../content/wegbeschreibung-text";
+---
+
+<BaseLayout title="Ihr Kontakt zur Privatpraxis Dr. rer. soc. Anja Schmid-Thomae" showFooter={false}>
+  <section class="pt-[40px] [@media(min-width:768px)]:pb-[60px]">
+    <div
+      class="max-w-[940px] mx-auto px-[20px] [@media(min-width:480px)]:px-[40px] [@media(min-width:992px)]:px-0"
+    >
+      <FooterMain />
+    </div>
+  </section>
+
+  <Wegbeschreibung title={wegbeschreibungTitle} items={wegbeschreibungItems} />
+
+  <footer class="bg-[#f4f4f4] pt-[60px] pb-[20px]">
+    <div
+      class="max-w-[940px] mx-auto px-[20px] [@media(min-width:480px)]:px-[40px] [@media(min-width:992px)]:px-0"
+    >
+      <SubFooter />
+    </div>
+  </footer>
+</BaseLayout>
